@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN echo "I'm a layer"
-RUN echo "I'm also a layer"
+COPY ./files/hello.txt /
+COPY ./files/world.txt /
 
-CMD echo "I ran"
+CMD cat /hello.txt && cat /world.txt
