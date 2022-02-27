@@ -8,6 +8,14 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          # Squashing image layers requires experimental mode
+          name: Set docker experimental mode
+          command: |
+            ssh remote-docker \<<EOF
+             sudo bash -c 'echo "{\"experimental\": true}" > /etc/docker/daemon.json'
+             sudo systemctl restart docker
+            EOF      
+      - run:
           name: Build application Docker image
           command: |
-            docker build -t app ./
+            docker build --squash -t app ./
