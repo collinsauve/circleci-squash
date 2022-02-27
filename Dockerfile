@@ -1,5 +1,6 @@
 FROM alpine
 
-RUN echo Building my custom image
+RUN echo "I'm a layer"
+RUN echo "I'm also a layer"
 
 CMD echo "I ran"
