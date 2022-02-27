@@ -10,7 +10,6 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: false
           version: 20.10.11
-
       - run: |
           ssh remote-docker \<<EOF
             sudo bash -c 'echo "{\"experimental\": true}" > /etc/docker/daemon.json'
