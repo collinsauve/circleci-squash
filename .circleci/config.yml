@@ -6,7 +6,11 @@ jobs:
       - image: docker:17.05.0-ce-git
     steps:
       - checkout
-      - setup_remote_docker
+
+      - setup_remote_docker:
+          docker_layer_caching: false
+          version: 20.10.11
+
       - run:
           # Squashing image layers requires experimental mode
           name: Set docker experimental mode
